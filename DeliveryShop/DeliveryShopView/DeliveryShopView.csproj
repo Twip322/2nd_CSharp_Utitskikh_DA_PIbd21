@@ -261,6 +261,10 @@
       <Project>{f4132f5a-96d4-42da-ab30-e6373d1a8236}</Project>
       <Name>DeliveryShopBusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DeliveryShopDataBaseImplement\DeliveryShopDataBaseImplement.csproj">
+      <Project>{9740104e-1d41-4c60-b05e-5a289e88a1c8}</Project>
+      <Name>DeliveryShopDataBaseImplement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DeliveryShopFileImplement\DeliveryShopFileImplement.csproj">
       <Project>{4afb8c33-21e6-4f0e-869e-404097c6f8e3}</Project>
       <Name>DeliveryShopFileImplement</Name>
