@@ -34,7 +34,10 @@ namespace DeliveryShopView
             currentContainer.RegisterType<IMealLogic, MealLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<MainLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogic>(new
+HierarchicalLifetimeManager());
             return currentContainer;
+
         }
     }
 }

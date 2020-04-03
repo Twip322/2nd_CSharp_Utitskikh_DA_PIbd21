@@ -13,7 +13,7 @@ namespace DeliveryShopDataBaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=PSB133S01ZFP;Initial Catalog=DeliveryShopDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-K2U0LTG;Initial Catalog=DeliveryShopDatabase1;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }

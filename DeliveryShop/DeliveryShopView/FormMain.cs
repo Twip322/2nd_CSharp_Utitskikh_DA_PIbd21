@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AbstractShopView;
 using DeliveryShopBusinessLogic.BindingModels;
 using DeliveryShopBusinessLogic.BusinessLogics;
 using DeliveryShopBusinessLogic.Interfaces;using Unity;
@@ -19,7 +20,8 @@ namespace DeliveryShopView
         public new IUnityContainer Container { get; set; }
         private readonly MainLogic logic;
         private readonly IOrderLogic orderLogic;
-        public FormMain(MainLogic logic,IOrderLogic orderLogic)
+        private readonly ReportLogic report;
+        public FormMain(MainLogic logic, IOrderLogic orderLogic)
         {
             InitializeComponent();
             this.logic = logic;
@@ -123,6 +125,34 @@ namespace DeliveryShopView
         private void buttonRef_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void списокБлюдToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    report.SaveComponentsToWordFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void блюдаПоНаборамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportDishMeal>();
+            form.ShowDialog();
+        }
+
+        private void списокЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
         }
     }
 }
