@@ -11,7 +11,6 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
 {
     public class ReportLogic
     {
-        private readonly IDishLogic componentLogic;
         private readonly IMealLogic productLogic;
         private readonly IOrderLogic orderLogic;
 
@@ -20,7 +19,6 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
        IOrderLogic orderLLogic)
         {
             this.productLogic = productLogic;
-            this.componentLogic = componentLogic;
             this.orderLogic = orderLLogic;
         }
         /// <summary>
@@ -29,54 +27,31 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         /// <returns></returns>
         public List<ReportDishMealViewModel> GetProductComponent()
         {
-            var components = componentLogic.Read(null);
             var products = productLogic.Read(null);
             var list = new List<ReportDishMealViewModel>();
-            foreach (var component in components)
+           foreach(var product in products)
             {
-                var record = new ReportDishMealViewModel
+                foreach(var dish in product.ProductComponents)
                 {
-                    ComponentName = component.ComponentName,
-                    Products = new List<Tuple<string, int>>(),
-                    TotalCount = 0
-                };
-                foreach (var product in products)
-                {
-                    if (product.ProductComponents.ContainsKey(component.Id))
+                    list.Add(new ReportDishMealViewModel
                     {
-                        record.Products.Add(new Tuple<string, int>(product.ProductName,
-                       product.ProductComponents[component.Id].Item2));
-                        record.TotalCount +=
-                       product.ProductComponents[component.Id].Item2;
-                    }
+                        ProductName = product.ProductName,
+                        DishName = dish.Value.Item1,
+                        Count = dish.Value.Item2
+                    });
                 }
-                list.Add(record);
             }
             return list;
         }
 
 
-        public List<ReportOrdersViewModel> GetOrders()
-        {
-            return orderLogic.Read(null)
-            .Select(x => new ReportOrdersViewModel
-            {
-                DateCreate = x.DateCreate,
-                ProductName = x.ProductName,
-                Count = x.Count,
-                Sum = x.Sum,
-                Status = x.Status
-            })
-           .ToList();
-        }
-
-
+    
         /// <summary>
         /// Получение списка заказов за определенный период
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public List<ReportOrdersViewModel> GetOrders(ReportBindingModel model)
+        public IEnumerable<IGrouping<DateTime, ReportOrdersViewModel>> GetOrders(ReportBindingModel model)
         {
             return orderLogic.Read(new OrderBindingModel
             {
@@ -91,7 +66,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                 Sum = x.Sum,
                 Status = x.Status
             })
-           .ToList();
+           .GroupBy(x => x.DateCreate.Date);
         }
         /// <summary>
         /// Сохранение компонент в файл-Word
@@ -102,8 +77,8 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Title = "Список компонент",
-                Components = componentLogic.Read(null)
+                Title = "Список Наборов",
+                Products = productLogic.Read(null)
             });
         }
         /// <summary>
@@ -114,9 +89,11 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         {
             SaveToExcel.CreateDoc(new ExcelInfo
             {
+                DateFrom = model.DateFrom.Value,
+                DateTo = model.DateTo.Value,
                 FileName = model.FileName,
-                Title = "Список компонент",
-                ProductComponents = GetProductComponent()
+                Title = "Заказы",
+                Orders = GetOrders(model)
             });
         }
         /// <summary>
@@ -128,9 +105,10 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             SaveToPDF.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "Список заказов",
-                Orders = GetOrders()
+                Title = "Список необходимых блюд для наборов",
+                ProductComponent = GetProductComponent()
             });
+
         }
 
     }

@@ -21,11 +21,12 @@ namespace DeliveryShopView
         private readonly MainLogic logic;
         private readonly IOrderLogic orderLogic;
         private readonly ReportLogic report;
-        public FormMain(MainLogic logic, IOrderLogic orderLogic)
+        public FormMain(MainLogic logic, IOrderLogic orderLogic,ReportLogic report)
         {
             InitializeComponent();
             this.logic = logic;
             this.orderLogic = orderLogic;
+            this.report = report;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -145,7 +146,7 @@ namespace DeliveryShopView
 
         private void блюдаПоНаборамToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormReportDishMeal>();
+            var form = Container.Resolve<FormReportClientOrders>();
             form.ShowDialog();
         }
 

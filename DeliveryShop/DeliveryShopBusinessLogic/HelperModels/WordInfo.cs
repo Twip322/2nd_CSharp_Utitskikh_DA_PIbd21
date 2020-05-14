@@ -9,7 +9,7 @@ namespace DeliveryShopBusinessLogic.HelperModels
     {
         public string FileName { get; set; }
         public string Title { get; set; }
-        public List<DishViewModel> Components { get; set; }
+        public List<MealViewModel> Products { get; set; }
 
     }
 }

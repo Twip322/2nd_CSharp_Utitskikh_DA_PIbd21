@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 using DeliveryShopBusinessLogic.HelperModels;
 using DocumentFormat.OpenXml;
@@ -13,7 +14,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         public static void CreateDoc(WordInfo info)
         {
             using (WordprocessingDocument wordDocument =
-           WordprocessingDocument.Create(info.FileName, WordprocessingDocumentType.Document))
+            WordprocessingDocument.Create(info.FileName, WordprocessingDocumentType.Document))
             {
                 MainDocumentPart mainPart = wordDocument.AddMainDocumentPart();
                 mainPart.Document = new Document();
@@ -28,13 +29,14 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                         JustificationValues = JustificationValues.Center
                     }
                 }));
-                foreach (var component in info.Components)
+                foreach (var product in info.Products)
                 {
                     docBody.AppendChild(CreateParagraph(new WordParagraph
                     {
-                        Texts = new List<string> { component.ComponentName },
+                        Texts = new List<string> { product.ProductName, " == " + product.Price.ToString() },
                         TextProperties = new WordParagraphProperties
                         {
+                            Bold = true,
                             Size = "24",
                             JustificationValues = JustificationValues.Both
                         }
@@ -79,7 +81,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                         Val =
                    paragraph.TextProperties.Size
                     });
-                    if (paragraph.TextProperties.Bold)
+                    if (!run.StartsWith(" == ") && paragraph.TextProperties.Bold)
                     {
                         properties.AppendChild(new Bold());
                     }

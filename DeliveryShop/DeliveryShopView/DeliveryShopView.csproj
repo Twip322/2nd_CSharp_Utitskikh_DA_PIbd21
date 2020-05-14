@@ -258,11 +258,11 @@
     <Compile Include="FormMeals.Designer.cs">
       <DependentUpon>FormMeals.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormReportDishMeal.cs">
+    <Compile Include="FormReportClientOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReportDishMeal.Designer.cs">
-      <DependentUpon>FormReportDishMeal.cs</DependentUpon>
+    <Compile Include="FormReportClientOrders.Designer.cs">
+      <DependentUpon>FormReportClientOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="FormReportOrders.cs">
       <SubType>Form</SubType>
@@ -294,8 +294,8 @@
     <EmbeddedResource Include="FormMeals.resx">
       <DependentUpon>FormMeals.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReportDishMeal.resx">
-      <DependentUpon>FormReportDishMeal.cs</DependentUpon>
+    <EmbeddedResource Include="FormReportClientOrders.resx">
+      <DependentUpon>FormReportClientOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReportOrders.resx">
       <DependentUpon>FormReportOrders.cs</DependentUpon>

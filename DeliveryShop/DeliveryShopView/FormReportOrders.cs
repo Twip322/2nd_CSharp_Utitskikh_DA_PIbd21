@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 using DeliveryShopBusinessLogic.BindingModels;
@@ -22,28 +15,15 @@ namespace AbstractShopView
         public FormReportOrders(ReportLogic logic)
         {
             InitializeComponent();
-        this.logic = logic;
+            this.logic = logic;
 
         }
         private void ButtonMake_Click(object sender, EventArgs e)
         {
-            if (dateTimePickerFirst.Value.Date >= dateTimePickerSecond.Value.Date)
-            {
-                MessageBox.Show("Дата начала должна быть меньше даты окончания",
-               "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             try
             {
-                ReportParameter parameter = new ReportParameter("ReportParameterPeriod",
-                "c " +
-               dateTimePickerFirst.Value.ToShortDateString() +
-                " по " +
-               dateTimePickerSecond.Value.ToShortDateString());
-                reportViewer1.LocalReport.SetParameters(parameter);
-                var dataSource = logic.GetOrders();
-                ReportDataSource source = new ReportDataSource("DataSetOrders",
-               dataSource);
+                var dataSource = logic.GetProductComponent();
+                ReportDataSource source = new ReportDataSource("DataSetDishMeal", dataSource);
                 reportViewer1.LocalReport.DataSources.Add(source);
                 reportViewer1.RefreshReport();
             }
@@ -70,8 +50,8 @@ namespace AbstractShopView
                         logic.SaveOrdersToPdfFile(new ReportBindingModel
                         {
                             FileName = dialog.FileName,
-                            //DateFrom = dateTimePickerFirst.Value,
-                            //DateTo = dateTimePickerSecond.Value
+                            DateFrom = dateTimePickerFirst.Value,
+                            DateTo = dateTimePickerSecond.Value
                         });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

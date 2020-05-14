@@ -16,7 +16,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         public static void CreateDoc(ExcelInfo info)
         {
             using (SpreadsheetDocument spreadsheetDocument =
-           SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
+            SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
             {
                 // Создаем книгу (в ней хранятся листы)
                 WorkbookPart workbookpart = spreadsheetDocument.AddWorkbookPart();
@@ -63,19 +63,22 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                     CellToName = "C1"
                 });
                 uint rowIndex = 2;
-                foreach (var pc in info.ProductComponents)
+                decimal totalSumma = 0;
+                List<DateTime> dates = new List<DateTime>();
+                foreach (var group in info.Orders)
                 {
+                    decimal promSum = 0;
                     InsertCellInWorksheet(new ExcelCellParameters
                     {
                         Worksheet = worksheetPart.Worksheet,
                         ShareStringPart = shareStringPart,
                         ColumnName = "A",
                         RowIndex = rowIndex,
-                        Text = pc.ComponentName,
+                        Text = group.Key.ToString(),
                         StyleIndex = 0U
                     });
                     rowIndex++;
-                    foreach (var product in pc.Products)
+                    foreach (var order in group)
                     {
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
@@ -83,7 +86,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "B",
                             RowIndex = rowIndex,
-                            Text = product.Item1,
+                            Text = order.ProductName,
                             StyleIndex = 1U
                         });
                         InsertCellInWorksheet(new ExcelCellParameters
@@ -92,22 +95,61 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "C",
                             RowIndex = rowIndex,
-                            Text = product.Item2.ToString(),
+                            Text = order.Count.ToString(),
                             StyleIndex = 1U
                         });
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "D",
+                            RowIndex = rowIndex,
+                            Text = order.Sum.ToString(),
+                            StyleIndex = 1U
+                        });
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "E",
+                            RowIndex = rowIndex,
+                            Text = order.Status.ToString(),
+                            StyleIndex = 1U
+                        });
+                        totalSumma += order.Sum;
+                        promSum += order.Sum;
                         rowIndex++;
                     }
                     InsertCellInWorksheet(new ExcelCellParameters
                     {
                         Worksheet = worksheetPart.Worksheet,
                         ShareStringPart = shareStringPart,
-                        ColumnName = "C",
+                        ColumnName = "D",
                         RowIndex = rowIndex,
-                        Text = pc.TotalCount.ToString(),
+                        Text = promSum.ToString(),
                         StyleIndex = 0U
                     });
                     rowIndex++;
                 }
+                rowIndex++;
+                InsertCellInWorksheet(new ExcelCellParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    ShareStringPart = shareStringPart,
+                    ColumnName = "C",
+                    RowIndex = rowIndex,
+                    Text = "Итог: ",
+                    StyleIndex = 0U
+                });
+                InsertCellInWorksheet(new ExcelCellParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    ShareStringPart = shareStringPart,
+                    ColumnName = "D",
+                    RowIndex = rowIndex,
+                    Text = totalSumma.ToString(),
+                    StyleIndex = 0U
+                });
                 workbookpart.Workbook.Save();
             }
         }
@@ -328,7 +370,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
            cellParameters.RowIndex).Count() != 0)
             {
                 row = sheetData.Elements<Row>().Where(r => r.RowIndex ==
-    cellParameters.RowIndex).First();
+cellParameters.RowIndex).First();
             }
             else
             {

@@ -95,7 +95,7 @@
             // 
             this.списокБлюдToolStripMenuItem.Name = "списокБлюдToolStripMenuItem";
             this.списокБлюдToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.списокБлюдToolStripMenuItem.Text = "Список блюд";
+            this.списокБлюдToolStripMenuItem.Text = "Список Наборов";
             this.списокБлюдToolStripMenuItem.Click += new System.EventHandler(this.списокБлюдToolStripMenuItem_Click);
             // 
             // блюдаПоНаборамToolStripMenuItem
@@ -109,7 +109,7 @@
             // 
             this.списокЗаказовToolStripMenuItem.Name = "списокЗаказовToolStripMenuItem";
             this.списокЗаказовToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
+            this.списокЗаказовToolStripMenuItem.Text = "Состав Наборов";
             this.списокЗаказовToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовToolStripMenuItem_Click);
             // 
             // dataGridView
