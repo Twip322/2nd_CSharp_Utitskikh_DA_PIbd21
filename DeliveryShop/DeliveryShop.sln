@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryShopListImplement",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryShopFileImplement", "DeliveryShopFileImplement\DeliveryShopFileImplement.csproj", "{4AFB8C33-21E6-4F0E-869E-404097C6F8E3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryShopDataBaseImplement", "DeliveryShopDataBaseImplement\DeliveryShopDataBaseImplement.csproj", "{9740104E-1D41-4C60-B05E-5A289E88A1C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4AFB8C33-21E6-4F0E-869E-404097C6F8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AFB8C33-21E6-4F0E-869E-404097C6F8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AFB8C33-21E6-4F0E-869E-404097C6F8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
