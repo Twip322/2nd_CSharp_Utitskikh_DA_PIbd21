@@ -7,20 +7,13 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>a01c67e3-9fb5-4674-b289-c72d9f8fae5d</rd:DataSourceID>
-    </DataSource>
-    <DataSource Name="DeliveryShopBusinessLogicViewModels1">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>a3148ff7-f9e4-44f4-8602-1a25a5074d57</rd:DataSourceID>
+      <rd:DataSourceID>495d0253-fbd0-4bbc-b32e-582ba8e1f833</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="DataSetOrders">
       <Query>
-        <DataSourceName>DeliveryShopBusinessLogicViewModels1</DataSourceName>
+        <DataSourceName>DeliveryShopBusinessLogicViewModels</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -435,10 +428,10 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet1</DataSetName>
+            <DataSetName>DataSetOrders</DataSetName>
             <Top>1.63724cm</Top>
             <Left>2.37808cm</Left>
-            <Height>2.43417cm</Height>
+            <Height>2.43416cm</Height>
             <Width>13.54604cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -484,7 +477,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Sum(Fields!Sum.Value, "DataSetOrders")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>

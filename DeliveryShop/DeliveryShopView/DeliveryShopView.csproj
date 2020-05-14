@@ -311,6 +311,7 @@
     </Compile>
     <EmbeddedResource Include="Report.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DeliveryShopBusinessLogic.BusinessLogics.ReportLogic.datasource" />
     <None Include="Properties\DataSources\DeliveryShopBusinessLogic.ViewModels.DishViewModel.datasource" />
     <None Include="Properties\DataSources\DeliveryShopBusinessLogic.ViewModels.MealViewModel.datasource" />
     <None Include="Properties\DataSources\DeliveryShopBusinessLogic.ViewModels.OrderViewModel.datasource" />

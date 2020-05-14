@@ -23,6 +23,7 @@ namespace AbstractShopView
         {
             InitializeComponent();
         this.logic = logic;
+
         }
         private void ButtonMake_Click(object sender, EventArgs e)
         {
@@ -40,11 +41,7 @@ namespace AbstractShopView
                 " по " +
                dateTimePickerSecond.Value.ToShortDateString());
                 reportViewer1.LocalReport.SetParameters(parameter);
-                var dataSource = logic.GetOrders(new ReportBindingModel
-                {
-                    DateFrom = dateTimePickerFirst.Value,
-                    DateTo = dateTimePickerSecond.Value
-                });
+                var dataSource = logic.GetOrders();
                 ReportDataSource source = new ReportDataSource("DataSetOrders",
                dataSource);
                 reportViewer1.LocalReport.DataSources.Add(source);
@@ -73,8 +70,8 @@ namespace AbstractShopView
                         logic.SaveOrdersToPdfFile(new ReportBindingModel
                         {
                             FileName = dialog.FileName,
-                            DateFrom = dateTimePickerFirst.Value,
-                            DateTo = dateTimePickerSecond.Value
+                            //DateFrom = dateTimePickerFirst.Value,
+                            //DateTo = dateTimePickerSecond.Value
                         });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

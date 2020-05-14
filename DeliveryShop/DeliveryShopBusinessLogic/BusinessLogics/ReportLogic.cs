@@ -14,6 +14,8 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         private readonly IDishLogic componentLogic;
         private readonly IMealLogic productLogic;
         private readonly IOrderLogic orderLogic;
+
+
         public ReportLogic(IMealLogic productLogic, IDishLogic componentLogic,
        IOrderLogic orderLLogic)
         {
@@ -21,11 +23,11 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             this.componentLogic = componentLogic;
             this.orderLogic = orderLLogic;
         }
- /// <summary>
- /// Получение списка компонент с указанием, в каких изделиях используются
- /// </summary>
- /// <returns></returns>
- public List<ReportDishMealViewModel> GetProductComponent()
+        /// <summary>
+        /// Получение списка компонент с указанием, в каких изделиях используются
+        /// </summary>
+        /// <returns></returns>
+        public List<ReportDishMealViewModel> GetProductComponent()
         {
             var components = componentLogic.Read(null);
             var products = productLogic.Read(null);
@@ -52,6 +54,23 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             }
             return list;
         }
+
+
+        public List<ReportOrdersViewModel> GetOrders()
+        {
+            return orderLogic.Read(null)
+            .Select(x => new ReportOrdersViewModel
+            {
+                DateCreate = x.DateCreate,
+                ProductName = x.ProductName,
+                Count = x.Count,
+                Sum = x.Sum,
+                Status = x.Status
+            })
+           .ToList();
+        }
+
+
         /// <summary>
         /// Получение списка заказов за определенный период
         /// </summary>
@@ -81,11 +100,11 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         public void SaveComponentsToWordFile(ReportBindingModel model)
         {
             SaveToWord.CreateDoc(new WordInfo
-        {
+            {
                 FileName = model.FileName,
- Title = "Список компонент",
- Components = componentLogic.Read(null)
- });
+                Title = "Список компонент",
+                Components = componentLogic.Read(null)
+            });
         }
         /// <summary>
         /// Сохранение компонент с указаеним продуктов в файл-Excel
@@ -110,10 +129,9 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             {
                 FileName = model.FileName,
                 Title = "Список заказов",
-                DateFrom = model.DateFrom.Value,
-                DateTo = model.DateTo.Value,
-                Orders = GetOrders(model)
+                Orders = GetOrders()
             });
         }
+
     }
 }

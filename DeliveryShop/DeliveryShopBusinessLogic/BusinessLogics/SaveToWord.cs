@@ -33,11 +33,11 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                     docBody.AppendChild(CreateParagraph(new WordParagraph
                     {
                         Texts = new List<string> { component.ComponentName },
-                    TextProperties = new WordParagraphProperties
- {
-     Size = "24",
-     JustificationValues = JustificationValues.Both
- }
+                        TextProperties = new WordParagraphProperties
+                        {
+                            Size = "24",
+                            JustificationValues = JustificationValues.Both
+                        }
                     }));
                 }
                 docBody.AppendChild(CreateSectionProperties());
@@ -92,7 +92,7 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
                     });
                     docParagraph.AppendChild(docRun);
                 }
-            return docParagraph;
+                return docParagraph;
             }
             return null;
         }
