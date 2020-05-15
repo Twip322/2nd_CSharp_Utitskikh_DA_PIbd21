@@ -2,6 +2,7 @@
 using DeliveryShopBusinessLogic.HelperModels;
 using DeliveryShopBusinessLogic.Interfaces;
 using DeliveryShopBusinessLogic.ViewModels;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
 
 
         public ReportLogic(IMealLogic productLogic, IDishLogic componentLogic,
-       IOrderLogic orderLLogic)
+       IOrderLogic orderLogic)
         {
             this.productLogic = productLogic;
-            this.orderLogic = orderLLogic;
+            this.orderLogic = orderLogic;
         }
         /// <summary>
         /// Получение списка компонент с указанием, в каких изделиях используются
@@ -45,7 +46,9 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         }
 
 
-    
+      
+
+
         /// <summary>
         /// Получение списка заказов за определенный период
         /// </summary>

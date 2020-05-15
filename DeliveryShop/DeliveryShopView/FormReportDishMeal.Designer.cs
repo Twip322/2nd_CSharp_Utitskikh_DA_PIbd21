@@ -1,6 +1,6 @@
 ﻿namespace AbstractShopView
 {
-    partial class FormReportOrders
+    partial class FormReportDishMeal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePickerFirst = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerSecond = new System.Windows.Forms.DateTimePicker();
             this.FormReport = new System.Windows.Forms.Button();
             this.FormReportPDF = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // dateTimePickerFirst
-            // 
-            this.dateTimePickerFirst.Location = new System.Drawing.Point(22, 12);
-            this.dateTimePickerFirst.Name = "dateTimePickerFirst";
-            this.dateTimePickerFirst.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerFirst.TabIndex = 0;
-            // 
-            // dateTimePickerSecond
-            // 
-            this.dateTimePickerSecond.Location = new System.Drawing.Point(256, 12);
-            this.dateTimePickerSecond.Name = "dateTimePickerSecond";
-            this.dateTimePickerSecond.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerSecond.TabIndex = 1;
-            // 
             // FormReport
             // 
-            this.FormReport.Location = new System.Drawing.Point(483, 8);
+            this.FormReport.Location = new System.Drawing.Point(12, 8);
             this.FormReport.Name = "FormReport";
-            this.FormReport.Size = new System.Drawing.Size(91, 23);
+            this.FormReport.Size = new System.Drawing.Size(98, 25);
             this.FormReport.TabIndex = 2;
             this.FormReport.Text = "Сформировать";
             this.FormReport.UseVisualStyleBackColor = true;
@@ -61,9 +45,9 @@
             // 
             // FormReportPDF
             // 
-            this.FormReportPDF.Location = new System.Drawing.Point(647, 8);
+            this.FormReportPDF.Location = new System.Drawing.Point(116, 8);
             this.FormReportPDF.Name = "FormReportPDF";
-            this.FormReportPDF.Size = new System.Drawing.Size(141, 23);
+            this.FormReportPDF.Size = new System.Drawing.Size(141, 25);
             this.FormReportPDF.TabIndex = 3;
             this.FormReportPDF.Text = "Сформировать в PDF";
             this.FormReportPDF.UseVisualStyleBackColor = true;
@@ -78,7 +62,7 @@
             this.reportViewer1.Size = new System.Drawing.Size(796, 405);
             this.reportViewer1.TabIndex = 3;
             // 
-            // FormReportOrders
+            // FormReportDishMeal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,18 +70,13 @@
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.FormReportPDF);
             this.Controls.Add(this.FormReport);
-            this.Controls.Add(this.dateTimePickerSecond);
-            this.Controls.Add(this.dateTimePickerFirst);
-            this.Name = "FormReportOrders";
+            this.Name = "FormReportDishMeal";
             this.Text = "FormReportOrders";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dateTimePickerFirst;
-        private System.Windows.Forms.DateTimePicker dateTimePickerSecond;
         private System.Windows.Forms.Button FormReport;
         private System.Windows.Forms.Button FormReportPDF;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;

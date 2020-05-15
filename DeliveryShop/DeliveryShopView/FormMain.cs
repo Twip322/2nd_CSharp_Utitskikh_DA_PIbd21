@@ -152,7 +152,7 @@ namespace DeliveryShopView
 
         private void списокЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormReportOrders>();
+            var form = Container.Resolve<FormReportDishMeal>();
             form.ShowDialog();
         }
     }

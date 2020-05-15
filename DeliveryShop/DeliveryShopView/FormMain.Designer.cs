@@ -102,7 +102,8 @@
             // 
             this.блюдаПоНаборамToolStripMenuItem.Name = "блюдаПоНаборамToolStripMenuItem";
             this.блюдаПоНаборамToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.блюдаПоНаборамToolStripMenuItem.Text = "Блюда по Наборам";
+            this.блюдаПоНаборамToolStripMenuItem.Text = "Список Заказов";
+            this.блюдаПоНаборамToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.блюдаПоНаборамToolStripMenuItem.Click += new System.EventHandler(this.блюдаПоНаборамToolStripMenuItem_Click);
             // 
             // списокЗаказовToolStripMenuItem

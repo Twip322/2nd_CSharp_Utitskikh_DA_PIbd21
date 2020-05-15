@@ -7,12 +7,12 @@ using Microsoft.Reporting.WinForms;
 
 namespace AbstractShopView
 {
-    public partial class FormReportOrders : Form
+    public partial class FormReportDishMeal : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly ReportLogic logic;
-        public FormReportOrders(ReportLogic logic)
+        public FormReportDishMeal(ReportLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
@@ -35,12 +35,7 @@ namespace AbstractShopView
         }
         private void ButtonToPdf_Click(object sender, EventArgs e)
         {
-            if (dateTimePickerFirst.Value.Date >= dateTimePickerSecond.Value.Date)
-            {
-                MessageBox.Show("Дата начала должна быть меньше даты окончания",
-               "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
             using (var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -50,8 +45,6 @@ namespace AbstractShopView
                         logic.SaveOrdersToPdfFile(new ReportBindingModel
                         {
                             FileName = dialog.FileName,
-                            DateFrom = dateTimePickerFirst.Value,
-                            DateTo = dateTimePickerSecond.Value
                         });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

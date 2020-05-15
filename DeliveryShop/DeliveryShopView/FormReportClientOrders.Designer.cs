@@ -35,8 +35,8 @@
             this.buttonToExel = new System.Windows.Forms.Button();
             this.buttonMake = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +99,13 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "по";
             // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Location = new System.Drawing.Point(356, 14);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerTo.TabIndex = 8;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -107,13 +114,6 @@
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "C";
-            // 
-            // dateTimePickerTo
-            // 
-            this.dateTimePickerTo.Location = new System.Drawing.Point(356, 14);
-            this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerTo.TabIndex = 8;
             // 
             // dateTimePickerFrom
             // 
@@ -151,8 +151,8 @@
         private System.Windows.Forms.Button buttonToExel;
         private System.Windows.Forms.Button buttonMake;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
     }
 }
