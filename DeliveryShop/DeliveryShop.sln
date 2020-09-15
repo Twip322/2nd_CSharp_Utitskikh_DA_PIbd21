@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryShopFileImplement",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryShopDataBaseImplement", "DeliveryShopDataBaseImplement\DeliveryShopDataBaseImplement.csproj", "{9740104E-1D41-4C60-B05E-5A289E88A1C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryShopRestApi", "DeliveryShopRestApi\DeliveryShopRestApi.csproj", "{819A219C-4690-490A-A03C-FA46B9DD8C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryShopClientView", "DeliveryShopClientView\DeliveryShopClientView.csproj", "{7ABB4B9C-C334-4EB4-947D-62CBA5BBC85E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9740104E-1D41-4C60-B05E-5A289E88A1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{819A219C-4690-490A-A03C-FA46B9DD8C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{819A219C-4690-490A-A03C-FA46B9DD8C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{819A219C-4690-490A-A03C-FA46B9DD8C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{819A219C-4690-490A-A03C-FA46B9DD8C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ABB4B9C-C334-4EB4-947D-62CBA5BBC85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABB4B9C-C334-4EB4-947D-62CBA5BBC85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABB4B9C-C334-4EB4-947D-62CBA5BBC85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABB4B9C-C334-4EB4-947D-62CBA5BBC85E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
