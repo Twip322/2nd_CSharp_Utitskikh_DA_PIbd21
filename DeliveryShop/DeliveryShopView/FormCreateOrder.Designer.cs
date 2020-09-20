@@ -28,111 +28,125 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxCount = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxSum = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.labelProduct = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.labelSum = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
+            this.textBoxCount = new System.Windows.Forms.TextBox();
+            this.textBoxSum = new System.Windows.Forms.TextBox();
+            this.ComboBoxClient = new System.Windows.Forms.ComboBox();
+            this.labelClient = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // labelProduct
+            // 
+            this.labelProduct.AutoSize = true;
+            this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelProduct.Location = new System.Drawing.Point(15, 32);
+            this.labelProduct.Name = "labelProduct";
+            this.labelProduct.Size = new System.Drawing.Size(65, 17);
+            this.labelProduct.TabIndex = 0;
+            this.labelProduct.Text = "Изделие";
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelCount.Location = new System.Drawing.Point(14, 86);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(86, 17);
+            this.labelCount.TabIndex = 1;
+            this.labelCount.Text = "Количество";
+            // 
+            // labelSum
+            // 
+            this.labelSum.AutoSize = true;
+            this.labelSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelSum.Location = new System.Drawing.Point(15, 109);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(50, 17);
+            this.labelSum.TabIndex = 2;
+            this.labelSum.Text = "Сумма";
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSave.Location = new System.Drawing.Point(171, 136);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 3;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(252, 136);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Отмена";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // comboBoxProduct
             // 
             this.comboBoxProduct.FormattingEnabled = true;
-            this.comboBoxProduct.Location = new System.Drawing.Point(171, 18);
-            this.comboBoxProduct.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxProduct.Location = new System.Drawing.Point(106, 31);
             this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.Size = new System.Drawing.Size(336, 28);
-            this.comboBoxProduct.TabIndex = 13;
+            this.comboBoxProduct.Size = new System.Drawing.Size(268, 21);
+            this.comboBoxProduct.TabIndex = 6;
             this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged);
-            this.comboBoxProduct.TextChanged += new System.EventHandler(this.textBoxCount_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Набор:";
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(171, 57);
-            this.textBoxCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCount.Location = new System.Drawing.Point(106, 85);
             this.textBoxCount.Name = "textBoxCount";
-            this.textBoxCount.Size = new System.Drawing.Size(336, 26);
-            this.textBoxCount.TabIndex = 11;
+            this.textBoxCount.Size = new System.Drawing.Size(268, 20);
+            this.textBoxCount.TabIndex = 5;
             this.textBoxCount.TextChanged += new System.EventHandler(this.textBoxCount_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 62);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Количество:";
             // 
             // textBoxSum
             // 
-            this.textBoxSum.Location = new System.Drawing.Point(171, 97);
-            this.textBoxSum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxSum.Location = new System.Drawing.Point(106, 108);
             this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.ReadOnly = true;
-            this.textBoxSum.Size = new System.Drawing.Size(336, 26);
-            this.textBoxSum.TabIndex = 15;
+            this.textBoxSum.Size = new System.Drawing.Size(268, 20);
+            this.textBoxSum.TabIndex = 7;
             // 
-            // label3
+            // ComboBoxClient
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 102);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 20);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Сумма:";
+            this.ComboBoxClient.FormattingEnabled = true;
+            this.ComboBoxClient.Location = new System.Drawing.Point(106, 58);
+            this.ComboBoxClient.Name = "ComboBoxClient";
+            this.ComboBoxClient.Size = new System.Drawing.Size(268, 21);
+            this.ComboBoxClient.TabIndex = 10;
             // 
-            // buttonCancel
+            // labelClient
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(390, 155);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(118, 35);
-            this.buttonCancel.TabIndex = 17;
-            this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(266, 155);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(118, 35);
-            this.buttonSave.TabIndex = 16;
-            this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.labelClient.AutoSize = true;
+            this.labelClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelClient.Location = new System.Drawing.Point(15, 59);
+            this.labelClient.Name = "labelClient";
+            this.labelClient.Size = new System.Drawing.Size(66, 17);
+            this.labelClient.TabIndex = 12;
+            this.labelClient.Text = "Клиенты";
             // 
             // FormCreateOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 205);
+            this.ClientSize = new System.Drawing.Size(386, 189);
+            this.Controls.Add(this.labelClient);
+            this.Controls.Add(this.ComboBoxClient);
+            this.Controls.Add(this.textBoxSum);
+            this.Controls.Add(this.comboBoxProduct);
+            this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxSum);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBoxProduct);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxCount);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Controls.Add(this.labelSum);
+            this.Controls.Add(this.labelCount);
+            this.Controls.Add(this.labelProduct);
             this.Name = "FormCreateOrder";
             this.Text = "Заказ";
             this.Load += new System.EventHandler(this.FormCreateOrder_Load);
@@ -143,13 +157,15 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxProduct;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxCount;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxSum;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Label labelSum;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.ComboBox comboBoxProduct;
+        private System.Windows.Forms.TextBox textBoxCount;
+        private System.Windows.Forms.TextBox textBoxSum;
+        private System.Windows.Forms.ComboBox ComboBoxClient;
+        private System.Windows.Forms.Label labelClient;
     }
 }

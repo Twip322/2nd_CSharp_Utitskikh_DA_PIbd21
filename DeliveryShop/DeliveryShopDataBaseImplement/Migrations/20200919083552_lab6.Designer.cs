@@ -4,14 +4,16 @@ using DeliveryShopDataBaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DeliveryShopDataBaseImplement.Migrations
 {
     [DbContext(typeof(DeliveryShopDataBase))]
-    partial class DeliveryShopDataBaseModelSnapshot : ModelSnapshot
+    [Migration("20200919083552_lab6")]
+    partial class lab6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

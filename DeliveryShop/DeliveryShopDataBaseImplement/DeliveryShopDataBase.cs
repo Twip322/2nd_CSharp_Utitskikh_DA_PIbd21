@@ -20,6 +20,7 @@ namespace DeliveryShopDataBaseImplement
         public virtual DbSet<Dish> Components { set; get; }
         public virtual DbSet<Meal> Products { set; get; }
         public virtual DbSet<AddDishMeal> ProductComponents { set; get; }
+        public virtual DbSet<Implementer> Implementers { get; set; }
         public virtual DbSet<Order> Orders { set; get; }
         public virtual DbSet<Client> Clients { set; get; }
 

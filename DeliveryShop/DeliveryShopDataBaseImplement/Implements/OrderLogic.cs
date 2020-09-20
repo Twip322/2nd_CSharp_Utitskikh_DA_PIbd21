@@ -2,6 +2,7 @@
 using DeliveryShopBusinessLogic.Interfaces;
 using DeliveryShopBusinessLogic.ViewModels;
 using DeliveryShopDataBaseImplement.Models;
+using DeliveryShopBusinessLogic.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,8 @@ namespace DeliveryShopDataBaseImplement.Implements
                 element.ProductId = model.ProductId == 0 ? element.ProductId : model.ProductId;
                 element.Count = model.Count;
                 element.ClientFIO = model.ClientFIO;
+                element.ImplementerFIO = model.ImplementerFIO;
+                element.ImplementerId = model.ImplementerId == 0 ? element.ImplementerId : model.ImplementerId; ;
                 element.Sum = model.Sum;
                 element.Status = model.Status;
                 element.DateCreate = model.DateCreate;
@@ -61,25 +64,25 @@ namespace DeliveryShopDataBaseImplement.Implements
         {
             using (var context = new DeliveryShopDataBase())
             {
-                return context.Orders
-                .Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
-                || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
-                (model.ClientId.HasValue && rec.ClientId == model.ClientId))
-                .Select(rec => new OrderViewModel
-                {
-                    Id = rec.Id,
-                    ClientId = rec.ClientId,
-                    ProductId = rec.ProductId,
-                    ClientFIO = rec.ClientFIO,
-                    Count = rec.Count,
-                    Sum = rec.Sum,
-                    Status = rec.Status,
-                    DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement,
-                    ProductName = context.Products.FirstOrDefault(recS => recS.Id ==
-                    rec.ProductId).ProductName,
-                })
-            .ToList();
+                return context.Orders.Where(rec => model == null || rec.Id == model.Id || (rec.DateCreate >= model.DateFrom)
+                 && (rec.DateCreate <= model.DateTo) || (model.ClientId == rec.ClientId) ||
+                 (model.FreeOrder.HasValue && model.FreeOrder.Value && !(rec.ImplementerFIO != null)) ||
+                 (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId.Value && rec.Status == OrderStatus.Выполняется))
+                 .Select(rec => new OrderViewModel()
+                 {
+                     Id = rec.Id,
+                     ProductId = rec.ProductId,
+                     ClientFIO = rec.ClientFIO,
+                     ClientId = rec.ClientId,
+                     ProductName = rec.Product.ProductName,
+                     ImplementerId = rec.ImplementerId,
+                     ImplementerFIO = rec.Implementer.ImplementerFIO,
+                     Count = rec.Count,
+                     DateCreate = rec.DateCreate,
+                     DateImplement = rec.DateImplement,
+                     Status = rec.Status,
+                     Sum = rec.Sum
+                 }).ToList();
             }
         }
     }
