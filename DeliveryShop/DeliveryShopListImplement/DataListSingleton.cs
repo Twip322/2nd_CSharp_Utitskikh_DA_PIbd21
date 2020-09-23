@@ -12,12 +12,14 @@ namespace DeliveryShopListImplement
         public List<Order> Orders { get; set; }
         public List<Meal> Meals { get; set; }
         public List<AddDishMeal> AddMealsDishes { get; set; }
+        public List<Client> Clients { get; set; }
         private DataListSingleton()
         {
             Dishes = new List<Dish>();
             Orders = new List<Order>();
             Meals = new List<Meal>();
             AddMealsDishes = new List<AddDishMeal>();
+            Clients = new List<Client>();
         }
         public static DataListSingleton GetInstance()
         {
