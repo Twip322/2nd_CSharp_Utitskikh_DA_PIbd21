@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel;
+using System.ComponentModel;using DeliveryShopBusinessLogic.Attributes;
+
 namespace DeliveryShopBusinessLogic.ViewModels
 {
-    public class DishViewModel
+    public class DishViewModel:BaseViewModel
     {
-        public int Id { get; set; }
-        [DisplayName("Название блюда")]
-        public string ComponentName { get; set; }
+        [Column(title: "Название блюда", width: 150)]
+        public string ComponentName { get; set; }        public override List<string> Properties() => new List<string> { "Id", "ComponentName" };
     }
 }

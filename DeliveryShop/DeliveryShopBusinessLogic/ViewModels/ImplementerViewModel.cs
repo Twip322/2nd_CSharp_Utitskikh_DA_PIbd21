@@ -1,21 +1,22 @@
-﻿using System;
+﻿using DeliveryShopBusinessLogic.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
 namespace DeliveryShopBusinessLogic.ViewModels
 {
-    public class ImplementerViewModel
+    public class ImplementerViewModel:BaseViewModel
     {
-        public int Id { get; set; }
 
-        [DisplayName("ФИО исполнителя")]
+        [Column(title: "ФИО исполнителя", width: 150)]
         public string ImplementerFIO { get; set; }
 
-        [DisplayName("Время на заказ")]
+        [Column(title: "Время на заказ", width: 100)]
         public int WorkingTime { get; set; }
 
-        [DisplayName("Время на перерыв")]
+        [Column(title: "Время на перерыв", width: 100)]
         public int PauseTime { get; set; }
+        public override List<string> Properties() => new List<string> { "Id", "ImplementerFIO", "WorkingTime", "PauseTime" };
     }
 }

@@ -42,6 +42,7 @@
             this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сообщенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьБекапToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonPayOrder = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             // buttonCreateOrder
             // 
-            this.buttonCreateOrder.Location = new System.Drawing.Point(1158, 94);
+            this.buttonCreateOrder.Location = new System.Drawing.Point(1197, 76);
             this.buttonCreateOrder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonCreateOrder.Name = "buttonCreateOrder";
             this.buttonCreateOrder.Size = new System.Drawing.Size(309, 38);
@@ -61,7 +62,7 @@
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(1158, 285);
+            this.buttonRef.Location = new System.Drawing.Point(1197, 210);
             this.buttonRef.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(309, 38);
@@ -77,7 +78,8 @@
             this.справочникиToolStripMenuItem,
             this.списокКомпонентовToolStripMenuItem,
             this.запускРаботToolStripMenuItem,
-            this.сообщенияToolStripMenuItem});
+            this.сообщенияToolStripMenuItem,
+            this.создатьБекапToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
@@ -99,28 +101,28 @@
             // компонентыToolStripMenuItem
             // 
             this.компонентыToolStripMenuItem.Name = "компонентыToolStripMenuItem";
-            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(253, 34);
             this.компонентыToolStripMenuItem.Text = "Блюда";
             this.компонентыToolStripMenuItem.Click += new System.EventHandler(this.компонентыToolStripMenuItem_Click);
             // 
             // списокИзделийToolStripMenuItem
             // 
             this.списокИзделийToolStripMenuItem.Name = "списокИзделийToolStripMenuItem";
-            this.списокИзделийToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.списокИзделийToolStripMenuItem.Size = new System.Drawing.Size(253, 34);
             this.списокИзделийToolStripMenuItem.Text = "Список Наборов";
             this.списокИзделийToolStripMenuItem.Click += new System.EventHandler(this.списокИзделийToolStripMenuItem_Click);
             // 
             // клиентыToolStripMenuItem
             // 
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(253, 34);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
             // исполнителиToolStripMenuItem
             // 
             this.исполнителиToolStripMenuItem.Name = "исполнителиToolStripMenuItem";
-            this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(253, 34);
             this.исполнителиToolStripMenuItem.Text = "Исполнители";
             this.исполнителиToolStripMenuItem.Click += new System.EventHandler(this.исполнителиToolStripMenuItem_Click);
             // 
@@ -169,6 +171,13 @@
             this.сообщенияToolStripMenuItem.Text = "Сообщения";
             this.сообщенияToolStripMenuItem.Click += new System.EventHandler(this.сообщенияToolStripMenuItem_Click);
             // 
+            // создатьБекапToolStripMenuItem
+            // 
+            this.создатьБекапToolStripMenuItem.Name = "создатьБекапToolStripMenuItem";
+            this.создатьБекапToolStripMenuItem.Size = new System.Drawing.Size(145, 29);
+            this.создатьБекапToolStripMenuItem.Text = "Создать бекап";
+            this.создатьБекапToolStripMenuItem.Click += new System.EventHandler(this.создатьБекапToolStripMenuItem_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -176,12 +185,12 @@
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 62;
-            this.dataGridView.Size = new System.Drawing.Size(1131, 611);
+            this.dataGridView.Size = new System.Drawing.Size(1171, 611);
             this.dataGridView.TabIndex = 6;
             // 
             // buttonPayOrder
             // 
-            this.buttonPayOrder.Location = new System.Drawing.Point(1158, 237);
+            this.buttonPayOrder.Location = new System.Drawing.Point(1197, 146);
             this.buttonPayOrder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonPayOrder.Name = "buttonPayOrder";
             this.buttonPayOrder.Size = new System.Drawing.Size(309, 38);
@@ -231,5 +240,6 @@
         private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
         private System.Windows.Forms.Button buttonPayOrder;
         private System.Windows.Forms.ToolStripMenuItem сообщенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьБекапToolStripMenuItem;
     }
 }
