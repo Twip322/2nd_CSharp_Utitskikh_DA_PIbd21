@@ -15,92 +15,68 @@ namespace DeliveryShopDataBaseImplement.Implements
         {
             using (var context = new DeliveryShopDataBase())
             {
-                using (var transaction = context.Database.BeginTransaction())
+                Order element;
+                if (model.Id.HasValue)
                 {
-                    try
+                    element = context.Orders.FirstOrDefault(rec => rec.Id ==
+                   model.Id);
+                    if (element == null)
                     {
-                        Order order;
-                        if (model.Id.HasValue)
-                        {
-                            order = context.Orders.ToList().FirstOrDefault(rec => rec.Id == model.Id);
-                            if (order == null)
-                                throw new Exception("Элемент не найден");
-                            order.ProductId = model.ProductId;
-                            order.Count = model.Count;
-                            order.DateCreate = model.DateCreate;
-                            order.DateImplement = model.DateImplement;
-                            order.Status = model.Status;
-                            order.Sum = model.Sum;
-                        }
-                        else
-                        {
-                            order = new Order();
-                            order.ProductId = model.ProductId;
-                            order.Count = model.Count;
-                            order.DateCreate = model.DateCreate;
-                            order.DateImplement = model.DateImplement;
-                            order.Status = model.Status;
-                            order.Sum = model.Sum;
-                            context.Orders.Add(order);
-                        }
-                        context.SaveChanges();
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw;
+                        throw new Exception("Элемент не найден");
                     }
                 }
+                else
+                {
+                    element = new Order();
+                    context.Orders.Add(element);
+                }
+                element.ProductId = model.ProductId == 0 ? element.ProductId : model.ProductId;
+                element.Count = model.Count;
+                element.Sum = model.Sum;
+                element.Status = model.Status;
+                element.DateCreate = model.DateCreate;
+                element.DateImplement = model.DateImplement;
+                context.SaveChanges();
             }
         }
-
         public void Delete(OrderBindingModel model)
         {
             using (var context = new DeliveryShopDataBase())
             {
-                using (var transaction = context.Database.BeginTransaction())
+                Order element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
+                if (element != null)
                 {
-                    try
-                    {
-                        Order order = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
-                        if (order != null)
-                        {
-                            context.Orders.Remove(order);
-                        }
-                        else
-                        {
-                            throw new Exception("Элемент не найден");
-                        }
-                        context.SaveChanges();
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
+                    context.Orders.Remove(element);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Элемент не найден");
                 }
             }
         }
-
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             using (var context = new DeliveryShopDataBase())
             {
-                return context.Orders.Where(rec => model == null || rec.Id == model.Id)
-                .ToList()
-                .Select(rec => new OrderViewModel()
-                {
-                    Id = rec.Id,
-                    ProductId = rec.ProductId,
-                    ProductName = context.Products.FirstOrDefault((r) => r.Id == rec.ProductId).ProductName,
-                    Count = rec.Count,
-                    DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement,
-                    Status = rec.Status,
-                    Sum = rec.Sum
-                }).ToList();
+                return context.Orders
+            .Where(
+                    rec => model == null
+                    || (rec.Id == model.Id && model.Id.HasValue)
+                    || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+                )
+            .Select(rec => new OrderViewModel
+            {
+                Id = rec.Id,
+                ProductId = rec.ProductId,
+                ProductName = rec.Product.ProductName,
+                Count = rec.Count,
+                Sum = rec.Sum,
+                Status = rec.Status,
+                DateCreate = rec.DateCreate,
+                DateImplement = rec.DateImplement
+            })
+            .ToList();
             }
         }
     }
