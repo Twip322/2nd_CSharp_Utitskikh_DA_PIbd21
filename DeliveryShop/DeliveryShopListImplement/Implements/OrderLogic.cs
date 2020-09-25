@@ -52,7 +52,7 @@ namespace DeliveryShopListImplement.Implements
                 source.Orders.Add(CreateModel(model, tempOrder));
             }
 
-        
+
         }
         public void Delete(OrderBindingModel model)
         {
@@ -115,7 +115,5 @@ namespace DeliveryShopListImplement.Implements
                 Sum = order.Sum
             };
         }
-
-
     }
 }

@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using DeliveryShopBusinessLogic.BindingModels;
 using DeliveryShopBusinessLogic.BusinessLogics;
 using DeliveryShopBusinessLogic.Interfaces;
-using DeliveryShopBusinessLogic.ViewModels;using Unity;
+using DeliveryShopBusinessLogic.ViewModels;using DeliveryShopDataBaseImplement.Implements;
+using Unity;
 
 namespace DeliveryShopView
 {
@@ -20,11 +21,13 @@ namespace DeliveryShopView
         public new IUnityContainer Container { get; set; }
         private readonly IMealLogic logicP;
         private readonly MainLogic logicM;
-        public FormCreateOrder(IMealLogic logicP, MainLogic logicM)
+        private readonly ClientLogic logicC;
+        public FormCreateOrder(IMealLogic logicP, MainLogic logicM,ClientLogic logicC)
         {
             InitializeComponent();
             this.logicP = logicP;
             this.logicM = logicM;
+            this.logicC = logicC;
         }
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
@@ -37,7 +40,10 @@ namespace DeliveryShopView
                     comboBoxProduct.ValueMember = "Id";
                     comboBoxProduct.DataSource = listP;
                     comboBoxProduct.SelectedItem=null;
-                }            }
+                }                var listC = logicC.Read(null);
+                ComboBoxClient.DisplayMember = "ClientFIO";
+                ComboBoxClient.ValueMember = "Id";
+                ComboBoxClient.DataSource = listC;            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
@@ -94,7 +100,9 @@ namespace DeliveryShopView
                 {
                     MealId = Convert.ToInt32(comboBoxProduct.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
-                    Sum = Convert.ToDecimal(textBoxSum.Text)
+                    Sum = Convert.ToDecimal(textBoxSum.Text),
+                    ClientId = Convert.ToInt32(ComboBoxClient.SelectedValue),
+                    ClientFIO = ComboBoxClient.Text
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DeliveryShopListImplement.Models;
+using DeliveryShopListImplement.Models;
+
 
 namespace DeliveryShopListImplement
 {
@@ -13,6 +14,7 @@ namespace DeliveryShopListImplement
         public List<Meal> Meals { get; set; }
         public List<AddDishMeal> AddMealsDishes { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Implementer> Implementers { get; set; }
         private DataListSingleton()
         {
             Dishes = new List<Dish>();
@@ -20,6 +22,7 @@ namespace DeliveryShopListImplement
             Meals = new List<Meal>();
             AddMealsDishes = new List<AddDishMeal>();
             Clients = new List<Client>();
+            Implementers = new List<Implementer>();
         }
         public static DataListSingleton GetInstance()
         {

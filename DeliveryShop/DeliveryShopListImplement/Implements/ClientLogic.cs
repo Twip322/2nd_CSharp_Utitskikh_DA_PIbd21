@@ -37,7 +37,6 @@ namespace DeliveryShopListImplement.Implements
                 {
                     throw new Exception("Элемент не найден");
                 }
-
                 CreateModel(model, tempClient);
             }
             else
