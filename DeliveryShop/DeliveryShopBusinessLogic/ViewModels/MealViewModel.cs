@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel;
+using System.ComponentModel;
+
 
 namespace DeliveryShopBusinessLogic.ViewModels
 {
@@ -12,6 +13,7 @@ namespace DeliveryShopBusinessLogic.ViewModels
         public string ProductName { get; set; }
         [DisplayName("Цена")]
         public decimal Price { get; set; }
-        public Dictionary<int, (string, int)> ProductComponents { get; set; }
+        public Dictionary<int, (string, int)> ProductComponents { get; set; }
+
     }
 }
