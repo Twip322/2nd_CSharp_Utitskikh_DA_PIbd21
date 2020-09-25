@@ -5,41 +5,42 @@ using System.ComponentModel;
 using DeliveryShopBusinessLogic.Enums;
 using Unity;
 using System.Runtime.Serialization;
+using DeliveryShopBusinessLogic.Attributes;
 
 namespace DeliveryShopBusinessLogic.ViewModels
 {
     [DataContract]
-    public class OrderViewModel
+    public class OrderViewModel:BaseViewModel
     {
-        [DataMember]
-        public int Id { get; set; }
         [DataMember]
         public int? ClientId { get; set; }
         [DataMember]
         public int ProductId { get; set; }
         [DataMember]
-        [DisplayName("Клиент")]
+        [Column(title: "Клиент", width: 150)]
         public string ClientFIO { get; set; }
         [DataMember]
-        [DisplayName("Изделие")]
+        [Column(title: "Набор", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string ProductName { get; set; }
         [DataMember]
-        [DisplayName("Количество")]
+        [Column(title: "Количество", width: 100)]
         public int Count { get; set; }
         [DataMember]
-        [DisplayName("Сумма")]
+        [Column(title: "Сумма", width: 80)]
         public decimal Sum { get; set; }
-        [DisplayName("Рабочий")]
+        [Column(title: "Исполнитель", width: 70)]
         public string ImplementerFIO { set; get; }
         [DataMember]
-        [DisplayName("Статус")]
+        [Column(title: "Статус", width: 100)]
         public OrderStatus Status { get; set; }
         [DataMember]
-        [DisplayName("Дата создания")]
+        [Column(title: "Дата создания", width: 100)]
         public DateTime DateCreate { get; set; }
         [DataMember]
-        [DisplayName("Дата выполнения")]
+        [Column(title: "Дата выполнения", width: 100)]
         public DateTime? DateImplement { get; set; }
         public int? ImplementerId { set; get; }
+        public override List<string> Properties() => new List<string>
+        { "Id", "ClientFIO", "ProductName", "ImplementerFIO", "Count", "Sum", "Status", "DateCreate", "DateImplement" };
     }
 }

@@ -23,13 +23,15 @@ namespace DeliveryShopView
         private readonly IOrderLogic orderLogic;
         private readonly ReportLogic report;
         private readonly WorkModeling modeling;
-        public FormMain(MainLogic logic, IOrderLogic orderLogic, ReportLogic report, WorkModeling modeling)
+        private readonly BackUpAbstractLogic backUpLogic;
+        public FormMain(MainLogic logic, IOrderLogic orderLogic, ReportLogic report, WorkModeling modeling, BackUpAbstractLogic backuplogic)
         {
             InitializeComponent();
             this.logic = logic;
             this.orderLogic = orderLogic;
             this.report = report;
             this.modeling = modeling;
+            this.backUpLogic = backuplogic;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -37,18 +39,14 @@ namespace DeliveryShopView
         }
         private void LoadData()
         {
-            var listOrders = orderLogic.Read(null);
-            if (listOrders != null)
+            try
             {
-                dataGridView.DataSource = listOrders;
-                dataGridView.Columns[0].Visible = false;
-                dataGridView.Columns[1].Visible = false;
-                dataGridView.Columns[2].Visible = false;
-                dataGridView.Columns[3].Visible = true;
-                dataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                dataGridView.Columns[11].Visible = false;
+                Program.ConfigGrid(orderLogic.Read(null), dataGridView);
             }
-            dataGridView.Update();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void компонентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,10 +97,6 @@ namespace DeliveryShopView
                    MessageBoxIcon.Error);
                 }
             }
-        }
-        private void buttonPayOrder_Click(object sender, EventArgs e)
-        {
-
         }
         private void buttonRef_Click(object sender, EventArgs e)
         {
@@ -169,6 +163,26 @@ namespace DeliveryShopView
         {
             var form = Container.Resolve<FormMessages>();
             form.ShowDialog();
+        }
+        private void создатьБекапToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (backUpLogic != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        backUpLogic.CreateArchive(fbd.SelectedPath);
+                        MessageBox.Show("Бекап создан", "Сообщение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
