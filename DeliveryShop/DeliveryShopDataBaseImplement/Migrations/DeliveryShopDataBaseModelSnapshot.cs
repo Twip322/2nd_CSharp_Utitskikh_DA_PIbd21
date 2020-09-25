@@ -15,7 +15,7 @@ namespace DeliveryShopDataBaseImplement.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -39,8 +39,7 @@ namespace DeliveryShopDataBaseImplement.Migrations
 
                     b.HasIndex("ComponentId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductComponents");
                 });
@@ -106,8 +105,7 @@ namespace DeliveryShopDataBaseImplement.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Orders");
                 });
@@ -121,8 +119,8 @@ namespace DeliveryShopDataBaseImplement.Migrations
                         .IsRequired();
 
                     b.HasOne("DeliveryShopDataBaseImplement.Models.Meal", "Product")
-                        .WithOne("ProductComponent")
-                        .HasForeignKey("DeliveryShopDataBaseImplement.Models.AddDishMeal", "ProductId")
+                        .WithMany("ProductComponent")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -130,8 +128,8 @@ namespace DeliveryShopDataBaseImplement.Migrations
             modelBuilder.Entity("DeliveryShopDataBaseImplement.Models.Order", b =>
                 {
                     b.HasOne("DeliveryShopDataBaseImplement.Models.Meal", "Product")
-                        .WithOne("Order")
-                        .HasForeignKey("DeliveryShopDataBaseImplement.Models.Order", "ProductId")
+                        .WithMany("Order")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
