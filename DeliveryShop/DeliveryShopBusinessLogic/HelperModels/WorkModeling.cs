@@ -55,26 +55,20 @@ namespace DeliveryShopBusinessLogic.HelperModels
             }
             await Task.Run(() =>
             {
-                foreach (var order in orders)
-                {
+               
 
-                    // пытаемся назначить заказ на исполнителя
+                    foreach (var order in orders)
+                    {
                     try
                     {
-                        // делаем работу
-                        Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count);
                         mainLogic.TakeOrderInWork(new ChangeStatusBindingModel
                         {
                             OrderId = order.Id,
                             ImplementerId = implementer.Id,
                             ImplementerFIO = implementer.ImplementerFIO,
                         });
-                        // отдыхаем
-                        Thread.Sleep(implementer.PauseTime);
-                    }
-                    catch (Exception) { }
-                    try
-                    {
+                        // делаем работу
+                        Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count);
                         mainLogic.FinishOrder(new ChangeStatusBindingModel
                         {
                             OrderId = order.Id,
@@ -83,8 +77,7 @@ namespace DeliveryShopBusinessLogic.HelperModels
                         });
                         // отдыхаем
                         Thread.Sleep(implementer.PauseTime);
-                    }
-                    catch (Exception) { }
+                    } catch (Exception) { }
                 }
             });
         }
