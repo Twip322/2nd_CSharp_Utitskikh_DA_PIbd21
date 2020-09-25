@@ -22,7 +22,8 @@ namespace DeliveryShopView
             var container = BuildUnityContainer();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(container.Resolve<FormMain>());
+            Application.Run(container.Resolve<FormMain>());
+
         }
         private static IUnityContainer BuildUnityContainer()
         {
