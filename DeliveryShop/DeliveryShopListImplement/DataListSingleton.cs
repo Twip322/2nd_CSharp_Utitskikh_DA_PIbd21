@@ -15,6 +15,7 @@ namespace DeliveryShopListImplement
         public List<AddDishMeal> AddMealsDishes { get; set; }
         public List<Client> Clients { get; set; }
         public List<Implementer> Implementers { get; set; }
+        public List<MessageInfo> MessageInfoes { get; set; }
         private DataListSingleton()
         {
             Dishes = new List<Dish>();
@@ -23,6 +24,7 @@ namespace DeliveryShopListImplement
             AddMealsDishes = new List<AddDishMeal>();
             Clients = new List<Client>();
             Implementers = new List<Implementer>();
+            MessageInfoes = new List<MessageInfo>();
         }
         public static DataListSingleton GetInstance()
         {
@@ -35,3 +37,4 @@ namespace DeliveryShopListImplement
 
     }
 }
+
