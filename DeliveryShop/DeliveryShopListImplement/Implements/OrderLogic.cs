@@ -26,7 +26,7 @@ namespace DeliveryShopListImplement.Implements
             };
             foreach (var order in source.Orders)
             {
-                if(order.DateCreate == model.DateCreate && order.Count==model.Count && order.ProductId==model.ProductId && order.Sum==model.Sum && order.Status==model.Status && order.Id!=model.Id)
+                if (order.DateCreate == model.DateCreate && order.Count == model.Count && order.ProductId == model.ProductId && order.Sum == model.Sum && order.Status == model.Status && order.Id != model.Id)
                 {
                     throw new Exception("Такой заказ уже есть");
                 }
@@ -72,7 +72,11 @@ namespace DeliveryShopListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (model != null)
+                if (
+                    model != null && order.Id == model.Id
+                    || model.DateFrom.HasValue && model.DateTo.HasValue && order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo
+                    || model.ClientId.HasValue && order.ClientId == model.ClientId
+                )
                 {
                     if (order.Id == model.Id)
                     {

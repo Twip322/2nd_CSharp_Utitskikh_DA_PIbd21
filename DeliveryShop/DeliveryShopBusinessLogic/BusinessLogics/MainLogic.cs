@@ -18,8 +18,10 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
         {
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
-                ProductId = model.ProductId,
+                ProductId = model.MealId,
+                ClientId = model.ClientId,
                 Count = model.Count,
+                ClientFIO = model.ClientFIO,
                 Sum = model.Sum,
                 DateCreate = DateTime.Now,
                 Status = OrderStatus.Принят
@@ -42,11 +44,13 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 ProductId = order.ProductId,
                 Count = order.Count,
+                ClientFIO = order.ClientFIO,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
-                
+                DateImplement = DateTime.Now,
                 Status = OrderStatus.Выполняется
             });
         }
@@ -68,10 +72,12 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ProductId = order.ProductId,
+                ClientId = order.ClientId,
+                ClientFIO = order.ClientFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
+                DateImplement = order.DateImplement,
                 Status = OrderStatus.Готов
             });
         }
@@ -93,6 +99,8 @@ namespace DeliveryShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ProductId = order.ProductId,
+                ClientId = order.ClientId,
+                ClientFIO = order.ClientFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
