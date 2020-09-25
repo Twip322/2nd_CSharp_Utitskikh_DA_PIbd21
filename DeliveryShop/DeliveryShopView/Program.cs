@@ -14,8 +14,6 @@ using Unity.Lifetime;
 using Microsoft.IdentityModel.Protocols;
 using DeliveryShopBusinessLogic.ViewModels;
 using DeliveryShopBusinessLogic.Attributes;
-
-namespace DeliveryShopView
 {
     static class Program
     {

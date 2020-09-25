@@ -25,8 +25,6 @@ namespace DeliveryShopFileImplement
         public List<Meal> Products { get; set; }
         public List<AddDishMeal> ProductComponents { get; set; }
         public List<Client> Clients { get; set; }
-        public List<Implementer> Implementers { get; set; }
-        public List<MessageInfo> MessageInfoes { get; set; }
         private FileDataListSingleton()
         {
             Components = LoadComponents();
@@ -36,9 +34,6 @@ namespace DeliveryShopFileImplement
             Clients = LoadClients();
             Implementers = LoadImplementers();
             MessageInfoes = LoadMessageInfoes();
-        }
-        public static FileDataListSingleton GetInstance()
-        {
             if (instance == null)
             {
                 instance = new FileDataListSingleton();
@@ -52,8 +47,6 @@ namespace DeliveryShopFileImplement
             SaveProducts();
             SaveProductComponents();
             SaveClients();
-            SaveImplementers();
-            SaveMessageInfoes();
         }
         private List<Dish> LoadComponents()
         {
@@ -67,7 +60,7 @@ namespace DeliveryShopFileImplement
                     list.Add(new Dish
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
-                        ComponentName = elem.Element("ComponentName").Value
+                        ComponentName = elem.Element("ComponentName").Value,
                     });
                 }
             }
@@ -161,6 +154,7 @@ namespace DeliveryShopFileImplement
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
                         ProductId = Convert.ToInt32(elem.Element("ProductId").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
                         Status = (OrderStatus)Enum.Parse(typeof(OrderStatus),
@@ -239,6 +233,7 @@ namespace DeliveryShopFileImplement
                     xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
                     new XElement("ProductId", order.ProductId),
+                    new XElement("ClientId", order.ClientId),
                     new XElement("Count", order.Count),
                     new XElement("Sum", order.Sum),
                     new XElement("Status", order.Status),
@@ -321,6 +316,43 @@ namespace DeliveryShopFileImplement
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(ProductComponentFileName);
+            }
+        }
+        private List<Client> LoadClients()
+        {
+            var list = new List<Client>();
+            if (File.Exists(ClientFileName))
+            {
+                XDocument xDocument = XDocument.Load(ClientFileName);
+                var xElements = xDocument.Root.Elements("Client").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Client
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientFIO = elem.Element("ClientFIO").Value,
+                        Email = elem.Element("Email").Value,
+                        Password = elem.Element("Password").Value
+                    });
+                }
+            }
+            return list;
+        }
+        private void SaveClients()
+        {
+            if (Clients != null)
+            {
+                var xElement = new XElement("Clients");
+                foreach (var client in Clients)
+                {
+                    xElement.Add(new XElement("Client",
+                    new XAttribute("Id", client.Id),
+                    new XElement("FIO", client.ClientFIO),
+                    new XElement("Email", client.Email),
+                    new XElement("Password", client.Password)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(ClientFileName);
             }
         }
     }

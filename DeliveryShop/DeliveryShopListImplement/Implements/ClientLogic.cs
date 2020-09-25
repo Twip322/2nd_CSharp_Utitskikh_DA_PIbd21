@@ -1,4 +1,5 @@
 ﻿using DeliveryShopBusinessLogic.BindingModels;
+using DeliveryShopBusinessLogic.Interfaces;
 using DeliveryShopBusinessLogic.ViewModels;
 using DeliveryShopListImplement.Models;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace DeliveryShopListImplement.Implements
 {
-    public class ClientLogic
+    public class ClientLogic:IClientLogic
     {
         private readonly DataListSingleton source;
 
@@ -18,23 +19,16 @@ namespace DeliveryShopListImplement.Implements
 
         public void CreateOrUpdate(ClientBindingModel model)
         {
-            Client tempClient = model.Id.HasValue ? null : new Client
+            Client tempClient = model.Id.HasValue ? null : new Client { Id = 1 };
+            foreach (var client in source.Clients)
             {
-                Id = 1
-            };
-            foreach (var Client in source.Clients)
-            {
-                if (Client.ClientFIO == model.ClientFIO && Client.Id != model.Id)
+                if (!model.Id.HasValue && client.Id >= tempClient.Id)
                 {
-                    throw new Exception("Уже есть клиент с таким логином");
+                    tempClient.Id = tempClient.Id + 1;
                 }
-                if (!model.Id.HasValue && Client.Id >= tempClient.Id)
+                else if (model.Id.HasValue && client.Id == model.Id)
                 {
-                    tempClient.Id = Client.Id + 1;
-                }
-                else if (model.Id.HasValue && Client.Id == model.Id)
-                {
-                    tempClient = Client;
+                    tempClient = client;
                 }
             }
             if (model.Id.HasValue)
