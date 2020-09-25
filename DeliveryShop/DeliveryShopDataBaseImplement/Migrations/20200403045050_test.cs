@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeliveryShopDataBaseImplement.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -88,8 +88,7 @@ namespace DeliveryShopDataBaseImplement.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_ProductId",
                 table: "Orders",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductComponents_ComponentId",
@@ -99,8 +98,7 @@ namespace DeliveryShopDataBaseImplement.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProductComponents_ProductId",
                 table: "ProductComponents",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

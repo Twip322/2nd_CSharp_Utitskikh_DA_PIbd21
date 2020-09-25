@@ -12,7 +12,6 @@ using DeliveryShopDataBaseImplement.Implements;
 using Unity;
 using Unity.Lifetime;
 using Microsoft.IdentityModel.Protocols;
-
 namespace DeliveryShopView
 {
     static class Program
